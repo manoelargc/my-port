@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manoela Resende | UI/UX Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8e44ad;
+            --primary-light: #9b59b6;
+            --primary-dark: #6c3483;
+            --secondary: #2c3e50;
+            --text: #f8f9fa;
+            --text-dark: #dee2e6;
+            --background: #121212;
+            --background-light: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(18, 18, 18, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+        }
+
+        .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-selector a {
+            font-weight: 500;
+        }
+
+        .language-selector a.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1600 900"><defs><linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%238e44ad;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%239b59b6;stop-opacity:0.1"/></linearGradient></defs><path fill="url(%23a)" d="M0,0 L1600,0 L1600,900 L0,900 Z"/><g fill="%239b59b6" fill-opacity="0.05"><circle cx="0" cy="0" r="1600"/><circle cx="1600" cy="900" r="1600"/></g></svg>') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            margin-bottom: 50px;
+            max-width: 600px;
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--background-light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--background);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: var(--primary-dark);
+            color: white;
+            font-size: 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .project-client {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary);
+            z-index: -1;
+            border-radius: 50%;
+            transform: translate(20px, 20px);
+        }
+
+        .about-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        .about-content {
+            padding-right: 20px;
+        }
+
+        .about-text {
+            margin-bottom: 20px;
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--background-light);
+        }
+
+        .skills-content {
+            margin-bottom: 60px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .skill-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .education-experience {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 80px;
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-subtitle {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .timeline-description {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        /* Certificates Section */
+        .certificates-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            margin: 0 5px;
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .filter-btn.active {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .filter-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .certificate-card {
+            background-color: var(--background);
+            border-radius: 8px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .certificate-issuer {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .certificate-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .certificate-description {
+            color: var(--text-dark);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .certificate-link {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--background);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .contact-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: white;
+        }
+
+        .back-to-top {
+            background-color: var(--primary-dark);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+        }
+
+        /* Animation */
+        .animate {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .education-experience {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .projects-grid, .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--background);
+            padding: 60px 20px;
+            transition: right 0.3s ease;
+            z-index: 1001;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-items {
+            list-style: none;
+        }
+
+        .mobile-menu-items li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-menu-items a {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo"><img src="img/logo-mare.svg" alt="Logo Mare" /> </a>
+
+                <ul class="nav-menu">
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#about">Sobre Mim</a></li>
+                    <li><a href="#skills">Habilidades</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <!-- <div class="language-selector">
+                    <a href="#" class="active">PT</a>
+                    <a href="#">EN</a>
+                </div> -->
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-menu-items">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#about">Sobre Mim</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content animate">
+                <p class="hero-subtitle">Portfólio de Manoela Resende</p>
+                <h1 class="hero-title">Criando experiências visuais autênticas, com propósito e identidade.</h1>
+                <div>
+                    <a href="https://drive.google.com/file/d/1yl0t-DHnMTlEmD970z4X43YVwRM_JYm1/view?usp=sharing" class="btn btn-outline">Currículo</a>
+                    <a href="#contact" class="btn btn-primary">Entrar em Contato</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/manoelaresende/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.behance.net/manoelargc"><i class="fab fa-behance"></i></a>
+                    <a href="https://github.com/manoelargc"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projetos em Destaque</h2>
+            <p class="section-subtitle">Transformando Ideias em Experiências. Cada projeto é uma oportunidade de traduzir identidade e propósito em interfaces visuais impactantes. Meu foco está em equilibrar estética, funcionalidade e a verdadeira essência das marcas.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card animate">
+                    <img src="/api/placeholder/400/320" alt="Sistema de Helpdesk UI/UX" class="project-image">
+                    <div class="project-content">
+                        <span class="project-tag">UX/UI Design</span>
+                        <h3 class="project-title">Sistema de Helpdesk UI/UX</h3>
+                        <p class="project-client">Criação da experiência do usuário (UX) e design de interface para um sistema de suporte técnico eficiente e intuitivo.</p>
+                        <a href="#" class="project-link">Saiba mais</a>
+                    </div>
+                </div>
+                
+                <div class="project-card animate">
+                    <img src="/api/placeholder/400/320" alt="SBSeg 2024 e 2025" class="project-image">
+                    <div class="project-content">
+                        <span class="project-tag">Branding</span>
+                        <h3 class="project-title">SBSeg 2024 e 2025</h3>
+                        <p class="project-client">Criação da identidade visual para os eventos nacionais da Sociedade Brasileira de Computação, realizados em parceria com o ITA.</p>
+                        <a href="#" class="project-link">Saiba mais</a>
+                    </div>
+                </div>
+                
+                <div class="project-card animate">
+                    <img src="/api/placeholder/400/320" alt="Curso de Cibersegurança PUCPR" class="project-image">
+                    <div class="project-content">
+                        <span class="project-tag">Identidade Visual</span>
+                        <h3 class="project-title">Curso de Cibersegurança PUCPR</h3>
+                        <p class="project-client">Desenvolvimento da identidade visual para o primeiro curso de cibersegurança do Brasil.</p>
+                        <a href="#" class="project-link">Saiba mais</a>
+                    </div>
+                </div>
+                
+                <div class="project-card animate">
+                    <img src="/api/placeholder/400/320" alt="Redesign de E-commerce" class="project-image">
+                    <div class="project-content">
+                        <span class="project-tag">UI/UX Design</span>
+                        <h3 class="project-title">Redesign de E-commerce</h3>
+                        <p class="project-client">Refatoração completa da interface, melhorando usabilidade, navegação e conversão.</p>
+                        <a href="#" class="project-link">Saiba mais</a>
+                    </div>
+                </div>
+                
+                <div class="project-card animate">
+                    <img src="/api/placeholder/400/320" alt="Gestão Visual para Social Media" class="project-image">
+                    <div class="project-content">
+                        <span class="project-tag">Social Media</span>
+                        <h3 class="project-title">Gestão Visual para Social Media</h3>
+                        <p class="project-client">Desenvolvimento de conteúdo estratégico e design para redes sociais, fortalecendo identidade digital de marcas.</p>
+                        <a href="#" class="project-link">Saiba mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about">
+                <div class="about-image animate">
+                    <img src="/api/placeholder/400/320" alt="Manoela Resende">
+                    <div class="about-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="about-content animate">
+                    <h2 class="section-title">Conheça Manoela Resende</h2>
+                    <div class="about-text">
+                        <p>Desde cedo, sempre fui uma criança criativa e focada, com uma afinidade natural para o design. Essa paixão me acompanhou ao longo dos anos e me levou a tomar uma grande decisão: sair do Rio de Janeiro e ir para o Rio Grande do Sul para cursar Ciência da Computação na Universidade Federal do Pampa, em busca do meu sonho.</p>
+                        <br>
+                        <p>Durante minha graduação, desenvolvi uma base sólida em lógica e programação. No entanto, foi no design que encontrei meu verdadeiro propósito, e essa conexão com o UX Design se tornou tão forte que decidi aprofundá-la no meu Trabalho de Conclusão de Curso.</p>
+                        <br>
+                        <p>Minha experiência vai desde a criação de identidades visuais e branding até o desenvolvimento de interfaces para web e aplicativos, minha principal área de interesse. Meu objetivo é criar experiências mais intuitivas e marcantes. Com uma abordagem focada em propósito e identidade, transformo conceitos em interfaces que equilibram estética e usabilidade. Trabalhei na identidade visual de eventos nacionais, como os da Sociedade Brasileira de Computação em parceria com o ITA, o SBSeg 2024 e 2025, além do 1º curso de Cibersegurança do Brasil na PUCPR.</p>
+                        <br>
+                        <p>Já atuei como fotógrafa, suporte técnico e social media, o que me permitiu desenvolver habilidades como comunicação, empatia e resolução de problemas.</p>
+                        <br>
+                        <p>Atualmente, sou UI/UX Designer e Social Media no Venda ERP, pioneiro em SaaS White Label no Brasil. Atuo na prototipação e refatoração de interfaces para melhorar a experiência do usuário, além de gerenciar redes sociais de 8 empresas. Utilizo ferramentas como Figma, Photoshop e Illustrator para criar soluções visuais funcionais e impactantes, sempre buscando aprimorar a experiência do usuário por meio de pesquisa e desenvolvimento contínuo.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1yl0t-DHnMTlEmD970z4X43YVwRM_JYm1/view?usp=sharing" class="btn btn-outline">Currículo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Habilidades e Ferramentas</h2>
+            <div class="skills-content animate">
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <span class="skill-icon">
+                            <i class="fas fa-user-alt"></i>
+                        </span>
+                        <span class="skill-name">UX/UI Design</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </span>
+                        <span class="skill-name">Branding</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </span>
+                        <span class="skill-name">Prototipação</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">
+                            <i class="fab fa-figma"></i>
+                        </span>
+                        <span class="skill-name">Figma</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">
+                            <i class="fab fa-wordpress"></i>
+                        </span>
+                        <span class="skill-name">Wordpress</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">
+                            <i class="fas fa-hashtag"></i>
+                        </span>
+                        <span class="skill-name">Social Media</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <span class="skill-name">Pesquisa</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </span>
+                        <span class="skill-name">Front-end</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </span>
+                        <span class="skill-name">Marketing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-experience">
+                <div class="education animate">
+                    <h3 class="section-title">Formação Acadêmica</h3>
+                    
+<!-- Completando a seção sobre a Formação Acadêmica que estava cortada -->
+<div class="timeline-item">
+    <div class="timeline-date">2022 - 2026</div>
+    <h4 class="timeline-title">Bacharelado em Ciência da Computação</h4>
+    <p class="timeline-subtitle">Universidade Federal do Pampa</p>
+    <p class="timeline-description">Durante esses 7º semestres na minha graduação, aprofundei meus conhecimentos em programação, computação gráfica e desenvolvimento web. Estudei algoritmos, estrutura de dados, banco de dados, engenharia de software e acessibilidade digital, consolidando uma base sólida para minha atuação profissional.</p>
+</div>
+
+<!-- Adicionar mais itens de formação acadêmica aqui se necessário -->
+</div>
+
+<div class="experience animate">
+    <h3 class="section-title">Experiência Profissional</h3>
+    
+    <div class="timeline-item">
+        <div class="timeline-date">2025 - Presente</div>
+        <h4 class="timeline-title">Web Designer Freelancer</h4>
+        <p class="timeline-subtitle">Autônoma</p>
+        <p class="timeline-description">Refatoração completa do design de um e-commerce no setor de beleza, com foco em usabilidade, navegação e conversão.</p>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-date">2023 - Presente</div>
+        <h4 class="timeline-title">Designer de Interface do Usuário e Social Media Designer</h4>
+        <p class="timeline-subtitle">Venda ERP</p>
+        <p class="timeline-description">Atuo na prototipagem e desenvolvimento de interfaces web, focando na experiência do usuário (UX) e usabilidade. Responsável também pela criação e execução de estratégias visuais para mídias sociais.</p>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-date">2023 - 2024</div>
+        <h4 class="timeline-title">Designer Gráfico</h4>
+        <p class="timeline-subtitle">Sociedade Brasileira de Computação</p>
+        <p class="timeline-description">Criação de identidade visual da edição XXIV Simpósio Brasileiro em Segurança da Informação e de Sistemas Computacionais - SBSEG 2024.</p>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-date">Junho 2024 - Outubro 2024</div>
+        <h4 class="timeline-title">Analista de Suporte</h4>
+        <p class="timeline-subtitle">Venda ERP</p>
+        <p class="timeline-description">Atuei no suporte técnico, solucionando problemas e auxiliando clientes na resolução de dúvidas técnicas.</p>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-date">Novembro 2023 - Maio 2024</div>
+        <h4 class="timeline-title">Suporte Técnico - Estágio</h4>
+        <p class="timeline-subtitle">Venda ERP</p>
+        <p class="timeline-description">Atendimento ao cliente e resolução de problemas técnicos, desenvolvendo habilidades em comunicação e solução de desafios em equipe.</p>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-date">Junho 2023 - Janeiro 2024</div>
+        <h4 class="timeline-title">Bolsista</h4>
+        <p class="timeline-subtitle">Universidade Federal do Pampa</p>
+        <p class="timeline-description">Pesquisa acadêmica focada no uso de diretivas de compilação para paralelização de aplicações de engenharia.</p>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title" style="text-align: center;">Vamos Criar Algo Juntos?</h2>
+        <div class="contact-content animate">
+            <p class="section-subtitle">Se você busca um design estratégico e alinhado à identidade da sua marca, estou pronta para transformar ideias em experiências visuais impactantes.</p>
+            
+            <div class="contact-buttons">
+                <a href="mailto:contato@manoelargc@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/manoelaresende/" target="_blank" class="btn btn-outline">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            
+            <!-- <div class="contact-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-medium-m"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <p class="footer-text">© 2025 Manoela Resende. Todos os direitos reservados.</p>
+            <a href="#hero" class="back-to-top">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+<!-- Script para funcionalidades da página -->
+<script>
+    // Função para alterar o header quando rolar a página
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Função para animar elementos quando entrarem na viewport
+    const animateElements = () => {
+        const elements = document.querySelectorAll('.animate');
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (elementPosition < windowHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+
+    window.addEventListener('scroll', animateElements);
+    window.addEventListener('load', animateElements);
+
+    // Funcionalidade do menu mobile
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.overlay');
+    const mobileMenuItems = document.querySelectorAll('.mobile-menu-items a');
+
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    const closeMobileMenu = () => {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+    overlay.addEventListener('click', closeMobileMenu);
+    mobileMenuItems.forEach(item => {
+        item.addEventListener('click', closeMobileMenu);
+    });
+
+    // Smooth scrolling para links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerHeight = document.getElementById('header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
