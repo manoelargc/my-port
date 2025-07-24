@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="img/logo-mare.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de UI para Desenvolvedores | Manoela Resende</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b35a5a;
+            --primary-light: #c96b6b;
+            --primary-dark: #803f3f;
+            --secondary: #2c3e50;
+            --text: #f8f9fa;
+            --text-dark: #dee2e6;
+            --background: #121212;
+            --background-light: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            background-color: rgba(18, 18, 18, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+        }
+
+        .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-selector a {
+            font-weight: 500;
+        }
+
+        .language-selector a.active {
+            color: var(--primary);
+        }
+
+        /* Project Header */
+        .project-header {
+            position: relative;
+            padding-top: 120px;
+            padding-bottom: 60px;
+            background-color: var(--background-light);
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                linear-gradient(to right, rgba(18,18,18,0.95) 20%, #121212b3 60%, rgba(18,18,18,0.2) 100%),
+                url('img/guia.png') no-repeat right center/cover;
+            opacity: 0.5;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .project-header::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--primary);
+            opacity: 0.15;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .project-header .header-overlay {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(18,18,18,0.6);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .project-header > .container {
+            position: relative;
+            z-index: 4;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-dark);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .breadcrumb .separator {
+            margin: 0 10px;
+            color: var(--text-dark);
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: var(--primary-dark);
+            color: white;
+            font-size: 14px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .project-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .project-content {
+            padding: 80px 0;
+        }
+
+        .content-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+
+        .section-content p {
+            margin-bottom: 20px;
+        }
+
+        .section-content strong {
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .section-image {
+            margin: 40px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .image-grid img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            margin: 40px 0;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            padding-top: 5px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            color: var(--text-dark);
+        }
+
+        /* Results Section */
+        .results {
+            background-color: var(--background-light);
+            padding: 80px 0;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .result-card {
+            background-color: var(--background);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .result-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .result-text {
+            color: var(--text-dark);
+        }
+
+        /* Call to Action */
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Navigation */
+        .project-navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-previous, .nav-next {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-previous i, .nav-next i {
+            font-size: 24px;
+        }
+
+        .nav-previous i {
+            margin-right: 15px;
+        }
+
+        .nav-next i {
+            margin-left: 15px;
+        }
+
+        .nav-project {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-label {
+            font-size: 12px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .nav-title {
+            font-weight: 500;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: white;
+        }
+
+        .back-to-top {
+            background-color: var(--primary-dark);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--background);
+            padding: 60px 20px;
+            transition: right 0.3s ease;
+            z-index: 1001;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-items {
+            list-style: none;
+        }
+
+        .mobile-menu-items li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-menu-items a {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Animation */
+        .animate {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 32px;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .project-navigation {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        .img-ajustada {
+            max-width: 600px; /* ajuste conforme a largura do texto */
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo"><img src="img/logo-mare.svg" alt="Logo Mare" /></a>
+                <ul class="nav-menu">
+                    <li><a href="index.html#hero">Home</a></li>
+                    <li><a href="index.html#projects" class="active">Projetos</a></li>
+                    <li><a href="index.html#about">Sobre Mim</a></li>
+                    <li><a href="index.html#skills">Habilidades</a></li>
+                    <li><a href="index.html#contact">Contato</a></li>
+                </ul>
+                <!-- <div class="language-selector">
+                    <a href="#" class="active">PT</a>
+                    <a href="#">EN</a>
+                </div> -->
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-menu-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#projects">Projetos</a></li>
+            <li><a href="index.html#about">Sobre Mim</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="index.html#projects">Projetos</a>
+                <span class="separator">/</span>
+                <span>Guia de UI para Desenvolvedores</span>
+            </div>
+            <span class="project-tag">UI/UX Design</span>
+            <h1 class="project-title">Guia de UI para Desenvolvedores</h1>
+            <p class="project-subtitle">Pesquisa em Design de Interação e Usabilidade para equipes técnicas</p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Cliente</span>
+                    <span class="meta-value">Projeto Autoral</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Papel</span>
+                    <span class="meta-value">Pesquisa, UI/UX Design & Documentação</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Ano</span>
+                    <span class="meta-value">2025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Main Content -->
+<section class="project-content">
+    <div class="container">
+        <!-- Compreendendo o Problema -->
+        <div class="content-section">
+            <h2 class="section-title">Compreendendo o Problema</h2>
+            <div class="section-content">
+                <p>Interfaces digitais mal projetadas são mais comuns do que se imagina — e muitas vezes, não por falta de esforço técnico, mas por ausência de conhecimento específico em design. Em diversos contextos de desenvolvimento, é o próprio time de TI quem assume decisões de UI, o que frequentemente leva a sistemas funcionais, mas com falhas graves de usabilidade e acessibilidade.</p>
+                <p><strong>Pergunta norteadora:</strong> como ajudar desenvolvedores a evitar erros clássicos de interface sem depender de um designer?</p>
+            </div>
+        </div>
+        <!-- A Proposta -->
+        <div class="content-section">
+            <h2 class="section-title">A Proposta</h2>
+            <div class="section-content">
+                <p>A resposta foi a criação de um <strong>Guia Prático de UI</strong>, estruturado para ser aplicado por profissionais técnicos, mesmo sem formação prévia em design. O foco é entregar clareza, estrutura e aplicabilidade. Em vez de conceitos genéricos, o guia é dividido em etapas objetivas, com fluxogramas, checklists e recomendações baseadas em erros reais.</p>
+            </div>
+        </div>
+        <!-- Estrutura do Guia -->
+        <div class="content-section">
+            <h2 class="section-title">Estrutura do Guia</h2>
+            <div class="section-content">
+                <p>O guia organiza as boas práticas em <strong>quatro frentes essenciais</strong>, pensadas para refletir a ordem natural de desenvolvimento de uma interface:</p>
+                <ul>
+                    <li><strong>Legibilidade e Cores:</strong> escolha e validação de paleta, contraste, tipografia e hierarquia visual;</li>
+                    <li><strong>Navegação e Operabilidade:</strong> agrupamento funcional, linguagem, foco visível e controle do usuário;</li>
+                    <li><strong>Feedback e Gestão de Erros:</strong> mensagens de sistema, validações progressivas, alertas e ajuda contextual;</li>
+                    <li><strong>Consistência e Componentes Reutilizáveis:</strong> padronização de botões, ícones, nomenclaturas e grids reutilizáveis.</li>
+                </ul>
+                <p>Cada bloco é apoiado por exemplos visuais, fluxogramas modelados em BPMN e ferramentas de apoio (como Figma, Skeleton Themes, ColorZilla, Adobe Color, WCAG checkers e bibliotecas de componentes).</p>
+            </div>
+        </div>
+        <!-- Fundamentação e Processo -->
+        <div class="content-section">
+            <h2 class="section-title">Fundamentação e Processo</h2>
+            <div class="section-content">
+                <p>O guia foi fundamentado em três pilares reconhecidos:</p>
+                <ul>
+                    <li>As <strong>heurísticas de usabilidade de Nielsen</strong></li>
+                    <li>O modelo <strong>CRAP (Contraste, Repetição, Alinhamento e Proximidade)</strong></li>
+                    <li>Os critérios de <strong>acessibilidade da WCAG 2.2</strong></li>
+                </ul>
+                <p>A estruturação do conteúdo partiu de dois estudos de caso avaliando:</p>
+                <ul>
+                    <li>Um sistema web em uso real (Rubric Pro)</li>
+                    <li>Um protótipo mobile-first (Osiris)</li>
+                </ul>
+                <p>As análises revelaram falhas como contraste insuficiente, desalinhamento visual, ausência de feedback e inconsistência de linguagem — pontos que fundamentaram diretamente os blocos temáticos do guia.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Resultados e Impacto -->
+<section class="results">
+    <div class="container">
+        <h2 class="section-title">Resultados e Impacto</h2>
+        <div class="results-grid">
+            <div class="result-card animate">
+                <div class="result-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="result-number">Guia Prático</div>
+                <div class="result-text">Aplicação rápida e acessível para equipes técnicas</div>
+            </div>
+            <div class="result-card animate">
+                <div class="result-icon">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <div class="result-number">Checklists</div>
+                <div class="result-text">Fluxos, listas e exemplos visuais para evitar erros clássicos</div>
+            </div>
+            <div class="result-card animate">
+                <div class="result-icon">
+                    <i class="fas fa-universal-access"></i>
+                </div>
+                <div class="result-number">Acessibilidade</div>
+                <div class="result-text">Baseado em heurísticas, CRAP e WCAG 2.2</div>
+            </div>
+            <div class="result-card animate">
+                <div class="result-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="result-number">Para devs</div>
+                <div class="result-text">Pensado para times técnicos sem background em design</div>
+            </div>
+            <div class="result-card animate">
+                <div class="result-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="result-number">Próximos passos</div>
+                <div class="result-text">Versão interativa e testes com equipes reais</div>
+            </div>
+        </div>
+        <div class="section-content" style="margin-top: 40px;">
+            <p>
+                O guia se mostrou eficaz para resolver os principais problemas encontrados nas avaliações de interface, oferecendo uma aplicação rápida que não exige experiência prévia em design. Embora não substitua um processo completo de UX, funciona como um atalho prático para equipes técnicas que precisam entregar interfaces mais claras e funcionais.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Call to Action -->
+<section class="cta">
+    <div class="container">
+        <h2 class="cta-title">Vamos Criar Algo Juntos?</h2>
+        <p class="cta-text">Se você busca transformar sua interface ou melhorar a experiência do usuário do seu produto, estou aqui para ajudar a transformar ideias em realidade.</p>
+        <div>
+            <a href="index.html#contact" class="btn btn-primary">Entrar em Contato</a>
+            <a href="index.html#projects" class="btn btn-outline">Ver Mais Projetos</a>
+        </div>
+    </div>
+</section>
+<!-- Project Navigation -->
+<div class="container">
+    <div class="project-navigation">
+        <a href="social.html" class="nav-previous">
+            <i class="fas fa-arrow-left"></i>
+            <div class="nav-project">
+                <span class="nav-label">Projeto Anterior</span>
+                <span class="nav-title">Gestão Visual para Social Media</span>
+            </div>
+        </a>
+        <a href="helpdesk.html" class="nav-next">
+            <div class="nav-project">
+                <span class="nav-label">Próximo Projeto</span>
+                <span class="nav-title">Sistema de Helpdesk UI/UX</span>
+            </div>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <p class="footer-text">© 2025 <a href="https://www.linkedin.com/in/manoelaresende/" target="_blank" style="color: white; text-decoration: underline;">Manoela Resende</a>. Todos os direitos reservados.</p>
+            <a href="#" class="back-to-top">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<!-- (adicione aqui o script igual ao helpdesk/sbseg/reviva/social, se necessário) -->
+</body>
+</html>

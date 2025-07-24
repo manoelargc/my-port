@@ -2,16 +2,17 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="img/logo-mare.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Helpdesk UI/UX | Manoela Resende</title>
+    <title>Gestão Visual para Social Media | Manoela Resende</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8e44ad;
-            --primary-light: #9b59b6;
-            --primary-dark: #6c3483;
+            --primary: #b35a5a;
+            --primary-light: #c96b6b;
+            --primary-dark: #803f3f;
             --secondary: #2c3e50;
             --text: #f8f9fa;
             --text-dark: #dee2e6;
@@ -104,9 +105,47 @@
 
         /* Project Header */
         .project-header {
+            position: relative;
             padding-top: 120px;
             padding-bottom: 60px;
             background-color: var(--background-light);
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                linear-gradient(to right, rgba(18,18,18,0.95) 20%, #121212b3 60%, rgba(18,18,18,0.2) 100%),
+                url('img/social.png') no-repeat right center/cover;
+            opacity: 0.5;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .project-header::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--primary);
+            opacity: 0.15;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .project-header .header-overlay {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(18,18,18,0.6);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .project-header > .container {
+            position: relative;
+            z-index: 4;
         }
 
         .breadcrumb {
@@ -542,6 +581,14 @@
                 display: block;
             }
         }
+
+        .img-ajustada {
+            max-width: 600px; /* ajuste conforme a largura do texto */
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -549,18 +596,18 @@
     <header id="header">
         <div class="container">
             <div class="header-content">
-                <a href="index.html" class="logo">MR.</a>
+                <a href="index.html" class="logo"><img src="img/logo-mare.svg" alt="Logo Mare" /></a>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#hero">Home</a></li>
                     <li><a href="index.html#projects" class="active">Projetos</a></li>
                     <li><a href="index.html#about">Sobre Mim</a></li>
-                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#skills">Habilidades</a></li>
                     <li><a href="index.html#contact">Contato</a></li>
                 </ul>
-                <div class="language-selector">
+                <!-- <div class="language-selector">
                     <a href="#" class="active">PT</a>
                     <a href="#">EN</a>
-                </div>
+                </div> -->
                 <button class="mobile-menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -585,35 +632,30 @@
 
     <!-- Project Header -->
     <section class="project-header">
+        <div class="header-overlay"></div>
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
                 <span class="separator">/</span>
                 <a href="index.html#projects">Projetos</a>
                 <span class="separator">/</span>
-                <span>Sistema de Helpdesk UI/UX</span>
+                <span>Gestão Visual para Social Media</span>
             </div>
-            
-            <span class="project-tag">UX/UI Design</span>
-            <h1 class="project-title">Elevando A Experiência Do Suporte Com IA</h1>
-            <p class="project-subtitle">Redesign completo de um sistema de helpdesk para melhorar a experiência do usuário e preparar para integração com inteligência artificial.</p>
-            
+            <span class="project-tag">Social Media</span>
+            <h1 class="project-title">Gestão Visual para Social Media</h1>
+            <p class="project-subtitle">Estratégia, Consistência e Identidade Única para marcas de diferentes segmentos.</p>
             <div class="project-meta">
                 <div class="meta-item">
                     <span class="meta-label">Cliente</span>
-                    <span class="meta-value">Venda ERP</span>
+                    <span class="meta-value">Diversos (ERP, Software, Beleza, Nutrição, Contabilidade)</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">Papel</span>
-                    <span class="meta-value">UI/UX Designer</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Prazo</span>
-                    <span class="meta-value">3 meses</span>
+                    <span class="meta-value">Gestora de Social Media & Designer</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">Ano</span>
-                    <span class="meta-value">2024</span>
+                    <span class="meta-value">2023-2025</span>
                 </div>
             </div>
         </div>
@@ -622,163 +664,96 @@
     <!-- Main Content -->
     <section class="project-content">
         <div class="container">
-            <!-- Visão Geral -->
+            <!-- Estratégia e Identidade -->
             <div class="content-section">
-                <h2 class="section-title">Compreendendo o Desafio</h2>
+                <h2 class="section-title">Estratégia, Consistência e Identidade Única</h2>
                 <div class="section-content">
-                    <p>O sistema de helpdesk já existia, mas sua interface era básica e sem divisões estruturadas, funcionando apenas como um chat simples. O desafio era aprimorar a experiência do usuário, criando um design mais organizado e intuitivo, além de estruturar a integração futura com inteligência artificial. O objetivo era tornar o suporte mais eficiente e personalizado, proporcionando uma plataforma escalável e moderna.</p>
-                </div>
-                <div class="section-image">
-                    <img src="/api/placeholder/1200/600" alt="Interface original do sistema de helpdesk">
+                    <p>Atualmente, gerencio a presença digital de oito marcas, incluindo empresas dos setores de software, ERP, helpdesk, beleza, nutrição e contabilidade. Cada perfil é desenvolvido de forma única e estratégica, com identidade visual própria, tom de voz específico e narrativas alinhadas ao público-alvo. Além disso, cada marca tem uma abordagem personalizada, transmitindo seus valores e diferenciais no mercado, garantindo uma comunicação autêntica que impulsiona seu crescimento e relevância digital.</p>
+                    <p>Meu foco está em construir perfis que não apenas sejam visualmente atraentes, mas que também engajem e convertam. Para isso, cada perfil segue uma abordagem exclusiva, adaptando design, tom de voz e estratégia de conteúdo ao público específico da marca.</p>
                 </div>
             </div>
-
-            <!-- Pesquisa -->
+            <!-- Criação e Desenvolvimento da Identidade Visual -->
             <div class="content-section">
-                <h2 class="section-title">Pesquisa e Descobertas</h2>
+                <h2 class="section-title">Criação e Desenvolvimento da Identidade Visual</h2>
                 <div class="section-content">
-                    <p>Para embasar o redesign, realizei uma análise de mercado, estudando concorrentes como JivoChat, Freshdesk, Zendesk e SpeedChat (Tecnospeed). Identifiquei funcionalidades úteis que poderiam ser implementadas e problemas comuns que precisavam ser evitados. Esse estudo guiou a diferenciação do produto, garantindo flexibilidade nas configurações de IA e uma experiência única para os usuários.</p>
-                    
-                    <p>Além disso, conduzi entrevistas com os agentes de suporte e realizei análises de dados do sistema atual, identificando pontos de atrito e oportunidades de melhoria no fluxo de trabalho. Descobrimos que os agentes perdiam tempo significativo classificando manualmente os tickets e buscando informações em diferentes sistemas.</p>
-                </div>
-                <div class="image-grid">
-                    <img src="/api/placeholder/600/400" alt="Análise de concorrentes">
-                    <img src="/api/placeholder/600/400" alt="Dados de uso do sistema atual">
+                    <ul>
+                        <li>Design estratégico e padronização visual, garantindo coerência entre feed, stories, posts interativos e anúncios pagos.</li>
+                        <li>Definição de tipografia, paleta de cores e elementos gráficos personalizados para fortalecer a identidade digital da marca.</li>
+                        <li>Elaboração de templates e variações visuais, mantendo um equilíbrio entre inovação e reconhecimento da marca pelo público.</li>
+                    </ul>
                 </div>
             </div>
-
-            <!-- Processo -->
+            <!-- Narrativa, Comunicação e Estratégia de Conteúdo -->
             <div class="content-section">
-                <h2 class="section-title">Processo de Design</h2>
+                <h2 class="section-title">Narrativa, Comunicação e Estratégia de Conteúdo</h2>
                 <div class="section-content">
-                    <p>O processo de redesign do sistema de helpdesk seguiu uma abordagem centrada no usuário, focando tanto na experiência dos agentes de suporte quanto dos clientes finais que utilizariam a plataforma.</p>
-                </div>
-                
-                <div class="process-steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Mapeamento de Jornada</h3>
-                            <p class="step-description">Documentei a jornada completa dos usuários no sistema atual, identificando pontos de atrito e oportunidades de automação com IA. Utilizei técnicas como user journey maps e fluxogramas para visualizar os processos existentes.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Wireframes e Arquitetura</h3>
-                            <p class="step-description">Desenvolvi wireframes para reorganizar a estrutura do sistema, criando espaços específicos para diferentes funcionalidades como histórico de conversas, base de conhecimento e área para IA. Esta fase focou em usabilidade e hierarquia de informação.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Prototipagem Interativa</h3>
-                            <p class="step-description">Criei protótipos interativos no Figma, simulando a experiência completa de uso. Esta etapa permitiu testar os fluxos de trabalho com usuários reais antes da implementação.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Design Visual</h3>
-                            <p class="step-description">Desenvolvi o sistema de design completo, com cores, tipografia e componentes padronizados para garantir consistência visual em toda a plataforma. Integrei elementos visuais que indicam claramente a interação com IA.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Testes com Usuários</h3>
-                            <p class="step-description">Realizei testes com agentes de suporte e clientes para validar as soluções propostas. Os feedbacks foram incorporados em iterações sucessivas do design.</p>
-                        </div>
-                    </div>
+                    <ul>
+                        <li>Cada perfil tem sua própria voz e abordagem, desde um tom mais técnico e formal (empresas de software e helpdesk) até uma comunicação mais leve e acessível (beleza e nutrição).</li>
+                        <li>Storytelling e construção de narrativas que conectam a marca ao público, destacando diferenciais e criando autoridade no segmento.</li>
+                        <li>Criação de legendas persuasivas e estratégias de engajamento, sempre alinhadas ao objetivo de cada empresa.</li>
+                    </ul>
                 </div>
             </div>
-            
-            <!-- Solução -->
+            <!-- Gestão Estratégica e Crescimento -->
             <div class="content-section">
-                <h2 class="section-title">A Solução</h2>
+                <h2 class="section-title">Gestão Estratégica e Crescimento</h2>
                 <div class="section-content">
-                    <p>A nova interface do sistema de helpdesk foi completamente redesenhada com foco na experiência do usuário e preparação para integração com IA. As principais características da solução incluem:</p>
-                    
-                    <p><strong>Dashboard Intuitivo:</strong> Reorganização completa do painel de controle com métricas visuais e alertas inteligentes para priorização de atendimentos.</p>
-                    
-                    <p><strong>Chat Estruturado:</strong> Interface de chat com áreas específicas para histórico de conversas, sugestões de IA e base de conhecimento integrada.</p>
-                    
-                    <p><strong>Sistema de Categorização:</strong> Implementação de um sistema automático de categorização de tickets, utilizando IA para classificar e direcionar as solicitações ao atendente mais adequado.</p>
-                    
-                    <p><strong>Design Responsivo:</strong> Interface adaptável para uso em diferentes dispositivos, permitindo que os agentes trabalhem de qualquer lugar.</p>
-                </div>
-                <div class="section-image">
-                    <img src="/api/placeholder/1200/600" alt="Nova interface do sistema de helpdesk">
-                </div>
-            </div>
-            
-            <!-- Detalhes de Design -->
-            <div class="content-section">
-                <h2 class="section-title">Detalhes do Design</h2>
-                <div class="section-content">
-                    <p>O design foi desenvolvido seguindo princípios de usabilidade e acessibilidade, com atenção especial aos seguintes aspectos:</p>
-                </div>
-                <div class="image-grid">
-                    <img src="/api/placeholder/600/400" alt="Componentes da interface">
-                    <img src="/api/placeholder/600/400" alt="Sistema de cores">
-                </div>
-                <div class="section-content">
-                    <p><strong>Sistema de Cores:</strong> Utilizei uma paleta predominantemente em tons de azul e violeta, que transmitem confiança e tranquilidade. As ações relacionadas à IA receberam destaque através de um tom específico de roxo, criando uma identidade visual clara para essas interações.</p>
-                    
-                    <p><strong>Tipografia:</strong> Optei pela família tipográfica Poppins, que oferece excelente legibilidade em diferentes tamanhos de tela e um visual moderno e profissional.</p>
-                    
-                    <p><strong>Componentes:</strong> Desenvolvi uma biblioteca completa de componentes reutilizáveis, garantindo consistência visual e facilitando atualizações futuras. Os componentes foram projetados seguindo um sistema modular, permitindo diferentes configurações conforme necessário.</p>
-                    
-                    <p><strong>Microinterações:</strong> Adicionei feedbacks visuais sutis para melhorar a experiência do usuário, como animações durante o carregamento de respostas da IA e indicadores de status da conversa.</p>
+                    <ul>
+                        <li>Planejamento mensal e cronograma de postagens, otimizando frequência e horário de publicação para maximizar o alcance.</li>
+                        <li>Uso de Meta Business e Google Ads, com segmentação estratégica para gerar conversões e atrair leads qualificados.</li>
+                        <li>Monitoramento de métricas e relatórios de desempenho, ajustando estratégias conforme comportamento e feedback do público.</li>
+                        <li>Acompanhamento de tendências e adaptação do conteúdo, garantindo relevância e inovação constante.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Results Section -->
+    <!-- Resultados e Impacto -->
     <section class="results">
         <div class="container">
             <h2 class="section-title">Resultados e Impacto</h2>
-            <div class="section-content">
-                <p>A implementação do novo design trouxe melhorias significativas para a equipe de suporte e para os clientes. Os números iniciais após três meses de uso mostram:</p>
-            </div>
-            
             <div class="results-grid">
                 <div class="result-card animate">
                     <div class="result-icon">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-users"></i>
                     </div>
-                    <div class="result-number">40%</div>
-                    <div class="result-text">Redução no tempo médio de atendimento</div>
+                    <div class="result-number">8 marcas</div>
+                    <div class="result-text">Gestão visual e estratégica de múltiplos segmentos</div>
                 </div>
-                
                 <div class="result-card animate">
                     <div class="result-icon">
-                        <i class="fas fa-smile"></i>
+                        <i class="fas fa-bullhorn"></i>
                     </div>
-                    <div class="result-number">32%</div>
-                    <div class="result-text">Aumento na satisfação dos clientes</div>
+                    <div class="result-number">+2M</div>
+                    <div class="result-text">Impressões mensais somadas entre todos os perfis</div>
                 </div>
-                
                 <div class="result-card animate">
                     <div class="result-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="result-number">65%</div>
-                    <div class="result-text">Aumento na eficiência dos agentes</div>
+                    <div class="result-number">20k-250k</div>
+                    <div class="result-text">Impressões mensais por perfil</div>
+                </div>
+                <div class="result-card animate">
+                    <div class="result-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="result-number">Engajamento</div>
+                    <div class="result-text">Aumento de seguidores e interações reais</div>
+                </div>
+                <div class="result-card animate">
+                    <div class="result-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="result-number">Reconhecimento</div>
+                    <div class="result-text">Autoridade e diferenciação digital para cada marca</div>
                 </div>
             </div>
-            
             <div class="section-content" style="margin-top: 40px;">
-                <p>Além dos números, observamos melhorias qualitativas como:</p>
-                <p>• Maior clareza na comunicação entre agentes e clientes<br>
-                • Redução da fadiga dos agentes devido à automação de tarefas repetitivas<br>
-                • Melhor organização do fluxo de trabalho da equipe de suporte<br>
-                • Preparação da infraestrutura para futuras expansões das funcionalidades de IA</p>
+                <p>
+                    Com uma abordagem personalizada, as marcas que gerencio fortaleceram sua identidade visual, ampliaram o engajamento e conquistaram maior reconhecimento digital. A gestão estratégica não só garante que cada empresa se posicione com autoridade e construa conexões autênticas com seu público, mas também impulsiona oportunidades de conversão de forma eficiente.
+                </p>
             </div>
         </div>
     </section>
@@ -798,18 +773,17 @@
     <!-- Project Navigation -->
     <div class="container">
         <div class="project-navigation">
-            <a href="#" class="nav-previous">
+            <a href="reviva.html" class="nav-previous">
                 <i class="fas fa-arrow-left"></i>
                 <div class="nav-project">
                     <span class="nav-label">Projeto Anterior</span>
-                    <span class="nav-title">Gestão Visual para Social Media</span>
+                    <span class="nav-title">Redesign de E-commerce</span>
                 </div>
             </a>
-            
-            <a href="#" class="nav-next">
+            <a href="guia.html" class="nav-next">
                 <div class="nav-project">
                     <span class="nav-label">Próximo Projeto</span>
-                    <span class="nav-title">SBSeg 2024 e 2025</span>
+                    <span class="nav-title">Guia de UI para Desenvolvedores</span>
                 </div>
                 <i class="fas fa-arrow-right"></i>
             </a>
@@ -820,7 +794,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p class="footer-text">© 2025 Manoela Resende. Todos os direitos reservados.</p>
+                <p class="footer-text">© 2025 <a href="https://www.linkedin.com/in/manoelaresende/" target="_blank" style="color: white; text-decoration: underline;">Manoela Resende</a>. Todos os direitos reservados.</p>
                 <a href="#" class="back-to-top">
                     <i class="fas fa-chevron-up"></i>
                 </a>
@@ -830,24 +804,6 @@
 
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
-    <!-- Script para funcionalidades da página -->
-    <script>
-        // Função para animar elementos quando entrarem na viewport
-        const animateElements = () => {
-            const elements = document.querySelectorAll('.animate');
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (elementPosition < windowHeight - 100) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
-
-        window.addEventListener('scroll', animateElements);
-        window.addEventListener('load', animateElements);
-
-        // Funcionalidade do menu mobile
-        const mobileMenuToggle = document.
+    <!-- (adicione aqui o script igual ao helpdesk/sbseg/reviva, se necessário) -->
+</body>
+</html>
