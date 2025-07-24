@@ -589,6 +589,25 @@
             display: block;
             margin: 0 auto;
         }
+
+        .hero-buttons {
+            display: inline-flex;
+            gap: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                margin: 0;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -763,7 +782,7 @@
         <div class="container">
             <h2 class="cta-title">Vamos Criar Algo Juntos?</h2>
             <p class="cta-text">Se você busca transformar sua interface ou melhorar a experiência do usuário do seu produto, estou aqui para ajudar a transformar ideias em realidade.</p>
-            <div>
+            <div class="hero-buttons">
                 <a href="index.html#contact" class="btn btn-primary">Entrar em Contato</a>
                 <a href="index.html#projects" class="btn btn-outline">Ver Mais Projetos</a>
             </div>
